@@ -1,13 +1,21 @@
 const path = require("path");
 
 const express = require("express");
-//const rootDir = require("../utils/path-helper");
-const productsController = require("../controllers/product");
 
 const router = express.Router();
 //const adminData = require("./admin");
 
-router.get("/", productsController.getProducts);
+const shopController = require("../controllers/shop");
+
+router.get("/", shopController.getIndex);
+
+router.get("/products", shopController.getProducts);
+
+router.get("/cart", shopController.getCart);
+
+router.get("/orders", shopController.getOrders);
+
+router.get("/checkout", shopController.getCheckout);
 
 //updated with MVC
 // router.get("/", (req, res, next) => {
