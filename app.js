@@ -32,6 +32,6 @@ app.set("views", "views");
 app.use("/admin", adminRoutes);
 app.use(shopRoute);
 
-app.use(errorControllers.getError404);
+app.use(errorControllers.get404);
 
 app.listen(3000);
