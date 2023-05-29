@@ -1,1 +1,9 @@
-[{"title":"A Book","imageUrl":"https://www.iars.co.in/wp-content/uploads/2021/02/20191219170611-GettyImages-1152794789.jpeg","description":"This is an awesome book!","price":"19"},{"title":"Second book","imageUrl":"https://www.iars.co.in/wp-content/uploads/2021/02/20191219170611-GettyImages-1152794789.jpeg","description":"This book is available online!","price":"25"}]
+[
+  {
+    "id": "5678dfghjgh68",
+    "title": "A Book",
+    "imageUrl": "https://www.iars.co.in/wp-content/uploads/2021/02/20191219170611-GettyImages-1152794789.jpeg",
+    "description": "This is an awesome book!",
+    "price": "19"
+  }
+]
