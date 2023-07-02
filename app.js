@@ -7,10 +7,23 @@ const bodyParse = require("body-parser");
 
 const adminRoutes = require("./routes/admin");
 const shopRoute = require("./routes/shop");
+
+//database setup
+const db = require("./utils/database");
+
 //moving ahead with ejs comment import for handlebars
 //const { engine } = require("express-handlebars");
 
 const app = express();
+
+//testing the DB connection
+/* db.execute("SELECT * from products")
+  .then((result) => {
+    console.log(result[0], result[1]);
+  })
+  .catch((err) => {
+    console.log(err);
+  }); */
 
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

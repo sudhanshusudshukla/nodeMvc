@@ -206,3 +206,8 @@ form {
     display: none;
   }
 }
+
+.imageurl {
+  width: 50% !important;
+  height: 50% !important;
+}
