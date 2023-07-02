@@ -1,16 +1,1 @@
-[
-  {
-    "id": "12345678",
-    "title": "A Book",
-    "imageUrl": "https://www.iars.co.in/wp-content/uploads/2021/02/20191219170611-GettyImages-1152794789.jpeg",
-    "description": "This is an awesome book!",
-    "price": "19"
-  },
-  {
-    "id": "234567890",
-    "title": "A Book",
-    "imageUrl": "https://www.iars.co.in/wp-content/uploads/2021/02/20191219170611-GettyImages-1152794789.jpeg",
-    "description": "This is an awesome book!",
-    "price": "25"
-  }
-]
+[{"id":"234567890","title":"A Book","imageUrl":"https://www.iars.co.in/wp-content/uploads/2021/02/20191219170611-GettyImages-1152794789.jpeg","description":"This is an awesome book!","price":"25"}]
