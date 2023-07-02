@@ -21,6 +21,8 @@ router.get("/orders", shopController.getOrders);
 
 router.get("/checkout", shopController.getCheckout);
 
+router.post("/cart-delete-item", shopController.postCartDeleteProduct);
+
 //updated with MVC
 // router.get("/", (req, res, next) => {
 //   //Now we already define views in views app.js, we dont need to construct path
