@@ -4,6 +4,9 @@ const errorControllers = require("./controllers/error");
 const bodyParse = require("body-parser");
 //chnaging adminRoute as exports got changed in adminRoutes
 //const adminRoute = require("./Routes/admin");
+const sequelize = require("./utils/database");
+const Product = require("./models/product");
+const User = require("./models/user");
 
 const adminRoutes = require("./routes/admin");
 const shopRoute = require("./routes/shop");
@@ -47,4 +50,14 @@ app.use(shopRoute);
 
 app.use(errorControllers.get404);
 
-app.listen(3000);
+Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
+User.hasMany(Product);
+
+sequelize
+  .sync({ force: true }) // will override table but in prod not required: only for testing
+  .then((results) => {
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
