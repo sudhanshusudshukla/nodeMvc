@@ -13,6 +13,8 @@ const shopRoute = require("./routes/shop");
 
 //database setup
 const db = require("./utils/database");
+const Cart = require("./models/cart");
+const CartItem = require("./models/cart-item");
 
 //moving ahead with ejs comment import for handlebars
 //const { engine } = require("express-handlebars");
@@ -30,6 +32,16 @@ const app = express();
 
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+//new middleware for incoming request
+app.use((req, res, next) => {
+  User.findByPk(1)
+    .then((user) => {
+      req.user = user;
+      next();
+    })
+    .catch((err) => console.log(err));
+});
 
 //added engine for handlebars
 /* app.engine(
@@ -53,9 +65,31 @@ app.use(errorControllers.get404);
 Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
 User.hasMany(Product);
 
+User.hasOne(Cart);
+Cart.belongsTo(User);
+Cart.belongsToMany(Product, { through: CartItem });
+Product.belongsToMany(Cart, { through: CartItem });
+
 sequelize
-  .sync({ force: true }) // will override table but in prod not required: only for testing
+  //.sync({ force: true }) // will override table but in prod not required: only for testing
+  .sync()
   .then((results) => {
+    return User.findByPk(1);
+  })
+  .then((user) => {
+    if (!user) {
+      return User.create({
+        name: "TestUser",
+        email: "test@test.com",
+      });
+    }
+    return user;
+  })
+  .then((user) => {
+    return user.createCart();
+  })
+  .then((cart) => {
+    //console.log("USER", user);
     app.listen(3000);
   })
   .catch((err) => {
