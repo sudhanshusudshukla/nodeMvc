@@ -15,7 +15,8 @@ const shopRoute = require("./routes/shop");
 const db = require("./utils/database");
 const Cart = require("./models/cart");
 const CartItem = require("./models/cart-item");
-
+const Order = require("./models/order");
+const OrderItem = require("./models/order-item");
 //moving ahead with ejs comment import for handlebars
 //const { engine } = require("express-handlebars");
 
@@ -69,6 +70,9 @@ User.hasOne(Cart);
 Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
+Order.belongsTo(User);
+User.hasMany(Order);
+Order.belongsToMany(Product, { through: OrderItem });
 
 sequelize
   //.sync({ force: true }) // will override table but in prod not required: only for testing
