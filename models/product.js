@@ -1,8 +1,32 @@
-const Sequelize = require("sequelize");
+/* MongoDB setup */
+const getDb = require("../utils/database").getDb;
+class Product {
+  constructor(title, price, imageUrl, description) {
+    this.title = title;
+    this.price = price;
+    this.imageUrl = imageUrl;
+    this.description = description;
+  }
 
-const sequelize = require("../utils/database");
+  save() {
+    const db = getDb();
+    return db
+      .collection("products")
+      .insertOne(this)
+      .then((result) => {
+        console.log("log product this", result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}
 
-const Product = sequelize.define("product", {
+/* const Sequelize = require("sequelize");
+
+const sequelize = require("../utils/database"); */
+
+/* const Product = sequelize.define("product", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -22,6 +46,6 @@ const Product = sequelize.define("product", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-});
+}); */
 
 module.exports = Product;
