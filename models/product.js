@@ -23,7 +23,7 @@ class Product {
     }
     return dbOp
       .then((result) => {
-        console.log("log product this", result);
+        console.log("logger product this", result);
       })
       .catch((err) => {
         console.log(err);
