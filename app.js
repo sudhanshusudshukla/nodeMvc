@@ -7,7 +7,7 @@ const bodyParse = require("body-parser");
 const mongoConnect = require("./utils/database").mongoConnect;
 
 const adminRoutes = require("./routes/admin");
-/*  const shopRoute = require("./routes/shop"); */
+const shopRoute = require("./routes/shop");
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use("/admin", adminRoutes);
-/* app.use(shopRoute); */
+app.use(shopRoute);
 
 mongoConnect(() => {
   app.listen(3000);

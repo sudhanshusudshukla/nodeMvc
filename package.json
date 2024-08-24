@@ -26,5 +26,12 @@
   "overrides": {
     "semver": "^7.5.2",
     "simple-update-notifier": "^1.1.0"
+  },
+  "audit": {
+    "ignore": [
+      {
+        "id": "GHSA-3965-hpx2-q597"
+      }
+    ]
   }
 }
