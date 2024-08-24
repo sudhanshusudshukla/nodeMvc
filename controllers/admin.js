@@ -73,11 +73,10 @@ exports.postEditProduct = (req, res, next) => {
     prodId
   );
 
-  product.save()
-    .then((result) => {
-      console.log("UPDATED PRODUCT!");
-      res.redirect("/admin/products");
-    });
+  product.save().then((result) => {
+    console.log("UPDATED PRODUCT!");
+    res.redirect("/admin/products");
+  });
 };
 
 exports.getProducts = (req, res, next) => {
@@ -94,15 +93,12 @@ exports.getProducts = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-/* exports.postDeleteProduct = (req, res, next) => {
+exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findByPk(prodId)
-    .then((product) => {
-      return product.destroy();
-    })
-    .then((result) => {
+  Product.deleteById(prodId)
+    .then(() => {
       console.log("DESTROYED OCCURED!");
       res.redirect("/admin/products");
     })
     .catch((err) => console.log(err));
-}; */
+};

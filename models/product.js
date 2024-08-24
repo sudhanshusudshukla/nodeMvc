@@ -15,11 +15,12 @@ class Product {
     let dbOp;
     if (this._id) {
       //upate product
-      dbOp = db.collection('products').updateOne(
-        { _id: this._id }, { $set: this });
+      dbOp = db
+        .collection("products")
+        .updateOne({ _id: this._id }, { $set: this });
     } else {
       //insert one
-      dbOp = db.collection('products').insertOne(this);
+      dbOp = db.collection("products").insertOne(this);
     }
     return dbOp
       .then((result) => {
@@ -57,6 +58,20 @@ class Product {
       })
       .catch((err) => {
         console.log(err);
+      });
+  }
+
+  static deleteById(prodId) {
+    const db = getDb();
+    console.log("inside!!!!");
+    return db
+      .collection("products")
+      .deleteOne({ _id: new mongodb.ObjectId(String(prodId)) })
+      .then((result) => {
+        console.log("DELETED!!!");
+      })
+      .catch((err) => {
+        console.log("ERROR in deleting product", err);
       });
   }
 }
