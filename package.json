@@ -18,7 +18,7 @@
     "express": "^4.19.2",
     "express-handlebars": "^6.0.7",
     "mongodb": "^6.5.0",
-    "mysql2": "^3.9.7",
+    "mysql2": "^3.11.5",
     "pug": "^3.0.2",
     "sequelize": "^6.32.1",
     "uuid": "^9.0.0"
@@ -28,10 +28,6 @@
     "simple-update-notifier": "^1.1.0"
   },
   "audit": {
-    "ignore": [
-      {
-        "id": "GHSA-3965-hpx2-q597"
-      }
-    ]
+    "ignore": []
   }
 }
